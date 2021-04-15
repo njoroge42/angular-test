@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {products} from '../products';
+import {CartService} from '../cart.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -8,9 +9,17 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-
   product;
-  constructor(private route : ActivatedRoute ) { 
+
+  addToCart(product){
+    this.CartService.addToCart(product);
+    window.alert("product added.")
+
+  }
+  constructor(
+    private route : ActivatedRoute,
+    private CartService :CartService
+   ) { 
     ;
   }
 
